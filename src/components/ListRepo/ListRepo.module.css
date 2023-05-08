@@ -1,0 +1,17 @@
+.list {
+  margin: auto;
+  width: 100%;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.empty {
+  color: coral;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
