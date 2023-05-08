@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { ListRepo, Search } from "../../components";
 import styles from "./App.module.css";
 

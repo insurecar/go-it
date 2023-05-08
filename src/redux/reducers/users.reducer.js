@@ -1,10 +1,16 @@
-import { GET_DATA, GET_SEARCH_TEXT, LOADER } from "../actions/users.actions";
+import {
+  GET_DATA,
+  GET_SEARCH_TEXT,
+  LOADER,
+  SET_PAGE_NUMBER,
+} from "../actions/users.actions";
 
 const initialState = {
   users: [],
   filteredUsers: [],
   loading: false,
   inputText: "",
+  pageNumber: 0,
 };
 
 export const usersReducer = (state = initialState, { type, payload }) => {
@@ -30,6 +36,8 @@ export const usersReducer = (state = initialState, { type, payload }) => {
         loading: payload,
       };
     }
+    case SET_PAGE_NUMBER:
+      return { ...state, pageNumber: payload };
     default:
       return state;
   }

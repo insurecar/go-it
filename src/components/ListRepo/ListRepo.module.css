@@ -1,6 +1,8 @@
 .list {
-  margin: auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loader {
@@ -14,4 +16,37 @@
   font-size: 16px;
   letter-spacing: 3px;
   margin-top: 20px;
+}
+.paginate {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.paginate li {
+  font-family: "Archivo", semibold;
+  box-sizing: border-box;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.activePaginate {
+  border-bottom: 3px solid #65b79a;
+}
+
+.previousBtn .disabled {
+  color: red;
+}
+/* 
+.disabledBtn {
+  pointer-events: none;
+  cursor: not-allowed;
+} */
+
+.paginate .dis {
+  cursor: not-allowed;
+  color: gray;
 }

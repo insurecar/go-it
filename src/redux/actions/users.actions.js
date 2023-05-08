@@ -4,6 +4,7 @@ export const GET_DATA = "USERS/GET_DATA";
 export const FILTERED_DATA = "USERS/FILTERED_DATA";
 export const GET_SEARCH_TEXT = "USERS/GET_SEARCH_TEXT";
 export const LOADER = "USERS/LOADER";
+export const SET_PAGE_NUMBER = "SET_PAGE_NUMBER";
 
 export const getData = () => (dispatch) =>
   axios(
@@ -25,4 +26,9 @@ export const getSearchText = (text) => ({
 export const setLoader = (payload) => ({
   type: LOADER,
   payload,
+});
+
+export const setPageNumber = (number) => ({
+  type: SET_PAGE_NUMBER,
+  payload: number,
 });

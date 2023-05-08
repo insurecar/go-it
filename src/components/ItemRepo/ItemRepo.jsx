@@ -11,7 +11,7 @@ export const ItemRepo = ({ item }) => {
         <img src={item.owner.avatar_url} alt="" />
       </div>
       <div className={styles.repo}>
-        <div className={styles.repoName}>{item.full_name}</div>
+        <div className={styles.repoName}>{item.name}</div>
         <div className={styles.auther}>{item.owner.login}</div>
         <div className={styles.language}>{item.language}</div>
         <div className={styles.description}>{item.description}</div>
