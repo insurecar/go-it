@@ -11,11 +11,16 @@ export const ItemRepo = ({ item }) => {
         <img src={item.owner.avatar_url} alt="" />
       </div>
       <div className={styles.repo}>
-        <div className={styles.repoName}>{item.name}</div>
+        <div className={styles.repoName}>
+          <a className={styles.link} href={item.html_url} target="_blank">
+            {item.name}
+          </a>
+        </div>
         <div className={styles.auther}>{item.owner.login}</div>
         <div className={styles.language}>{item.language}</div>
         <div className={styles.description}>{item.description}</div>
       </div>
+
       <div className={styles.followers}>
         <div className={styles.rating}>
           <img src={StarIcon} alt="star" />{" "}

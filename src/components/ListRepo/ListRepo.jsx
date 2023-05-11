@@ -16,6 +16,7 @@ export const ListRepo = () => {
   const usersPerPage = 3;
 
   const users = useSelector((state) => state?.usersReducer?.users?.items);
+
   const filteredUsers = useSelector(
     (state) => state?.usersReducer?.filteredUsers
   );
@@ -36,7 +37,10 @@ export const ListRepo = () => {
     ?.slice(pagesVisited, pagesVisited + usersPerPage)
     .map((item) => <ItemRepo key={item.id} item={item} />);
   const pageCount = Math.ceil(allUsers?.length / usersPerPage);
-  const handleChange = ({ selected }) => dispatch(setPageNumber(selected));
+  const handleChange = ({ selected }) => {
+    console.log(selected);
+    dispatch(setPageNumber(selected));
+  };
 
   return (
     <div className={styles.list}>

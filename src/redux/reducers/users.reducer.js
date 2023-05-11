@@ -1,9 +1,4 @@
-import {
-  GET_DATA,
-  GET_SEARCH_TEXT,
-  LOADER,
-  SET_PAGE_NUMBER,
-} from "../actions/users.actions";
+import { GET_DATA, LOADER, SET_PAGE_NUMBER } from "../actions/users.actions";
 
 const initialState = {
   users: [],
@@ -21,15 +16,6 @@ export const usersReducer = (state = initialState, { type, payload }) => {
         users: payload,
       };
 
-    case GET_SEARCH_TEXT:
-      console.log("reducer", state);
-      return {
-        ...state,
-        inputText: payload,
-        filteredUsers: state.users?.items?.filter((item) =>
-          item.name.toLowerCase().includes(payload.toLowerCase())
-        ),
-      };
     case LOADER: {
       return {
         ...state,

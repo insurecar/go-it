@@ -10,6 +10,14 @@
   box-shadow: 0px 24px 64px rgba(0, 0, 0, 0.04);
 }
 
+.link {
+  text-decoration: none;
+  color: #081f32;
+}
+.link:hover {
+  color: lightblue;
+}
+
 .avatar {
   width: 128px;
   height: 144px;
