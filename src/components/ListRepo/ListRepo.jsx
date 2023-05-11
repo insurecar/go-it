@@ -18,26 +18,25 @@ export const ListRepo = () => {
   const users = useSelector((state) => state?.usersReducer?.users?.items);
   const loader = useSelector((state) => state?.usersReducer?.loading);
 
-  const filteredUsers = useSelector(
-    (state) => state?.usersReducer?.filteredUsers
-  );
   const pageNumber = useSelector((state) => state?.usersReducer?.pageNumber);
   const pagesVisited = pageNumber * usersPerPage;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setLoader(true));
-    dispatch(getData());
-  }, []);
+
+    pageNumber === 0
+      ? dispatch(getData(usersPerPage))
+      : dispatch(getData((pageNumber + 1) * usersPerPage));
+  }, [pageNumber]);
 
   const displayUsers = users
     ?.slice(pagesVisited, pagesVisited + usersPerPage)
     .map((item) => <ItemRepo key={item.id} item={item} />);
 
-  const pageCount = Math.ceil(users?.length / usersPerPage);
+  const pageCount = Math.ceil(20 / usersPerPage);
 
   const handleChange = ({ selected }) => {
-    console.log(selected);
     dispatch(setPageNumber(selected));
   };
 
@@ -55,20 +54,20 @@ export const ListRepo = () => {
         </div>
       }
       {displayUsers}
-      {Boolean(displayUsers?.length) && (
-        <ReactPaginate
-          previousLabel="Previous"
-          nextLabel="Next"
-          previousLinkClassName={styles.previousBtn}
-          containerClassName={styles.paginate}
-          activeClassName={styles.activePaginate}
-          onPageChange={handleChange}
-          pageCount={7}
-          disabledLinkClassName={styles.disabledBtn}
-          disabledClassName={styles.dis}
-        />
-      )}
-
+      {/* {Boolean(displayUsers?.length) && ( */}
+      <ReactPaginate
+        previousLabel="Previous"
+        nextLabel="Next"
+        previousLinkClassName={styles.previousBtn}
+        containerClassName={styles.paginate}
+        activeClassName={styles.activePaginate}
+        onPageChange={handleChange}
+        disabledLinkClassName={styles.disabledBtn}
+        disabledClassName={styles.dis}
+        pageCount={7}
+        initialPage={pageNumber}
+      />
+      //
       <div>
         <a target="_blank" href="https://github.com/insurecar/go-it">
           Github
