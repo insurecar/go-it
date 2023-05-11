@@ -2,7 +2,6 @@ import { GET_DATA, LOADER, SET_PAGE_NUMBER } from "../actions/users.actions";
 
 const initialState = {
   users: [],
-  filteredUsers: [],
   loading: false,
   inputText: "",
   pageNumber: 0,

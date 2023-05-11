@@ -16,12 +16,11 @@ export const ListRepo = () => {
   const usersPerPage = 3;
 
   const users = useSelector((state) => state?.usersReducer?.users?.items);
+  const loader = useSelector((state) => state?.usersReducer?.loading);
 
   const filteredUsers = useSelector(
     (state) => state?.usersReducer?.filteredUsers
   );
-  const loader = useSelector((state) => state?.usersReducer?.loading);
-  const text = useSelector((state) => state?.usersReducer?.inputText);
   const pageNumber = useSelector((state) => state?.usersReducer?.pageNumber);
   const pagesVisited = pageNumber * usersPerPage;
   const dispatch = useDispatch();
@@ -31,12 +30,12 @@ export const ListRepo = () => {
     dispatch(getData());
   }, []);
 
-  const allUsers = text.trim() ? filteredUsers : users;
-
-  const displayUsers = allUsers
+  const displayUsers = users
     ?.slice(pagesVisited, pagesVisited + usersPerPage)
     .map((item) => <ItemRepo key={item.id} item={item} />);
-  const pageCount = Math.ceil(allUsers?.length / usersPerPage);
+
+  const pageCount = Math.ceil(users?.length / usersPerPage);
+
   const handleChange = ({ selected }) => {
     console.log(selected);
     dispatch(setPageNumber(selected));
@@ -64,15 +63,12 @@ export const ListRepo = () => {
           containerClassName={styles.paginate}
           activeClassName={styles.activePaginate}
           onPageChange={handleChange}
-          pageCount={pageCount}
+          pageCount={7}
           disabledLinkClassName={styles.disabledBtn}
           disabledClassName={styles.dis}
         />
       )}
 
-      {text.trim() && !filteredUsers.length && (
-        <div className={styles.empty}>Nothing was found for your request</div>
-      )}
       <div>
         <a target="_blank" href="https://github.com/insurecar/go-it">
           Github
